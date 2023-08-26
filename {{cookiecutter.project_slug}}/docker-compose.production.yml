@@ -1,0 +1,43 @@
+version: "3.3"
+
+networks:
+  proxy-public:
+    external: false
+
+services:
+  app:
+    image: ghcr.io/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}-app:production
+    deploy:
+      replicas: 1
+      update_config:
+        failure_action: rollback
+        delay: 15s
+    env_file:
+      - .env
+
+  proxy:
+    image: ghcr.io/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}-proxy:production
+    deploy:
+      replicas: 1
+      update_config:
+        failure_action: rollback
+        delay: 30s
+    depends_on:
+      - app
+    env_file:
+      - .env
+
+  db:
+    image: ghcr.io/{{cookiecutter.github_username}}/{{cookiecutter.project_slug}}-db:production
+    deploy:
+      replicas: 1
+      update_config:
+        failure_action: rollback
+        delay: 30s
+    depends_on:
+      - app
+    env_file:
+      - .env
+
+volumes:
+  app-db-data:

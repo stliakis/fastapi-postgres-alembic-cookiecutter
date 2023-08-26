@@ -1,0 +1,6 @@
+{
+  "project_name": "Python fastapi project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+  "development_port": "8045",
+  "github_username": "johnsmith"
+}
