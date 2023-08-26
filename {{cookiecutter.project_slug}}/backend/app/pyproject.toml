@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "nexly"
+name = "{{cookiecutter.project_slug}}"
 version = "0.0.1"
 description = ""
 authors = ["Liakis Stefanos <stliakis@gmail.com>"]
