@@ -40,9 +40,6 @@ class Settings(BaseSettings):
     def is_testing(self):
         return self.ENVIRONMENT == "testing"
 
-    TESTING_COLLECTION_ID: str = None
-    TESTING_COLLECTION_NAME: str = None
-
     POSTGRES_SERVER: str
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
